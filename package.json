@@ -1,0 +1,28 @@
+{
+  "name": "block-chain-ui-server",
+  "version": "0.0.1",
+  "description": "This project/server acts as a REST API between the actual block chain network and the UI",
+  "author": "Satya Suman, Praveen, Marco",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "Blockchain",
+    "Solutions",
+    "Framework",
+    "getting-started",
+    "Fabric Composer"
+  ],
+  "license": "Apache2",
+  "dependencies": {
+    "cli-table": "latest",
+    "composer-client": "latest",
+    "config": "^1.21.0",
+    "prettyoutput": "^1.1.1",
+    "restify": "^4.3.0",
+    "shelljs": "^0.7.5",
+    "winston": "^2.2.0",
+    "yargs": "^6.5.0"
+  }
+}

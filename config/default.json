@@ -1,0 +1,9 @@
+{
+
+  "block-chain-ui-server" : {
+     "participantId" : "WebAppAdmin",
+     "participantPwd" :"DJY27pEnl16d",
+     "businessNetworkIdentifier" : "com.novartis.iandd",
+     "connectionProfile" : "defaultProfile"
+  }
+}
