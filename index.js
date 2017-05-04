@@ -153,4 +153,4 @@ function createLiaison(req, res, next){
 
 }
 
-server.listen(4200,  initializeServer);
+server.listen(2400,  initializeServer);

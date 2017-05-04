@@ -24,33 +24,40 @@ let businessNetworkDefinition;
 let assetRegistry;
 
 // create the connection
-businessNetworkConnection.connect(connectionProfile, businessNetworkIdentifier, participantId, participantPwd)
+businessNetworkConnection.connect(connectionProfile, businessNetworkIdentifier, "PRAVEENU", "uNuwZdEIGTOQ")
   .then((result) => {
       businessNetworkDefinition = result;
       console.log('Connected: BusinessNetworkDefinition obtained=' + businessNetworkDefinition.getIdentifier());
-      return businessNetworkConnection.getAllAssetRegistries();
-  }).then((result) => {
-      console.log('List of asset registries=');
-
-      let table = new Table({
-          head: ['Registry Type', 'ID', 'Name']
-      });
-      for (let i=0; i<result.length; i++){
-          let tableLine = [];
-
-          tableLine.push(result[i].registryType);
-          tableLine.push(result[i].id);
-          tableLine.push(result[i].name);
-          table.push(tableLine);
-      }
-
-      console.log(table.toString());
-      return businessNetworkConnection.disconnect();
+      return businessNetworkConnection.getAssetRegistry('com.novartis.iandd.ServiceRequest')
+  }).then((serviceRequestRegistry) => {
+      console.log('List of service requests');
+      return serviceRequestRegistry.getAll();
   }).
-  then(() => {
+  then((allServiceRequests) => {
+      console.log("All service requests "+allServiceRequests.length)
+      
+      let serviceRequestTable = new Table({
+          head : ['Service Request ID', 'Doctor ID', 'Patient ID']
+      });
+      try {
+        for(var i = 0; i< allServiceRequests.length; i++){
+            console.log(JSON.stringify(allServiceRequests[i].getIdentifier()));
+            let tableLine = [];
+            tableLine.push("allServiceRequests[i].id");
+            tableLine.push("allServiceRequests[i].doctor.Id");
+            tableLine.push("allServiceRequests[i].patient.Id");      
+            serviceRequestTable.push(tableLine);            
+        }
+        console.log(serviceRequestTable.toString());
+      }catch(e){
+          console.error(e);
+      }
+        
+        return businessNetworkConnection.disconnect();
+  }).then(() => {
       console.log('All done');
       process.exit();
   })// and catch any exceptions that are triggered
   .catch(function (error) {
       throw error;
-  });
+    });

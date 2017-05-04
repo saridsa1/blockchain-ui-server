@@ -17,7 +17,7 @@
   "license": "Apache2",
   "dependencies": {
     "cli-table": "latest",
-    "composer-client": "latest",
+    "composer-client": "0.5.12",
     "config": "^1.21.0",
     "prettyoutput": "^1.1.1",
     "restify": "^4.3.0",
